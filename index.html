@@ -348,7 +348,7 @@
                     Creating immersive digital experiences through cutting-edge web development and stunning 3D animations.
                 </p>
                 <div class="flex space-x-4 fade-in">
-                    <a href="#contact" class="px-8 py-3 gradient-bg text-white font-bold rounded-full hover:opacity-90 transition">Hire Me</a>
+                    <a onclick="downl()" class="px-8 py-3 gradient-bg text-white font-bold rounded-full hover:opacity-90 transition">Download resume</a>
                     <a href="#projects" class="px-8 py-3 border-2 border-primary text-white font-bold rounded-full hover:bg-primary hover:bg-opacity-10 transition">View Work</a>
                 </div>
             </div>
@@ -1216,6 +1216,13 @@
     </footer>
     
     <script>
+        function downl(){
+        const downloadLink = document.createElement('a');
+downloadLink.href = 'quadriResume.pdf';
+downloadLink.download = true;
+downloadLink.click();
+        }
+        
                 // Form submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
