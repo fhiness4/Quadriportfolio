@@ -1,4 +1,4 @@
-
+window.addEventListener("load", init);
         function init() {
             // Remove loading message
             const loading = document.getElementById('loading');
@@ -15,7 +15,7 @@
 
             // Create renderer
             const renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setSize(window.innerWidth,window.innerHeight);
+            renderer.setSize(window.innerWidth, 500);
             renderer.shadowMap.enabled = true;
             renderer.shadowMap.type = THREE.PCFSoftShadowMap;
             dis.appendChild(renderer.domElement);
