@@ -698,4 +698,4 @@ downloadLink.click();
         
         // Initialize hero canvas
         initHeroCanvas();
-   init();
+  
