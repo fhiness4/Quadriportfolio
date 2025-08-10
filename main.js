@@ -1,5 +1,5 @@
   // Wait for everything to load
-        window.addEventListener('load', init);
+      init();
 
         function init() {
             // Remove loading message
