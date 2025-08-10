@@ -1,4 +1,4 @@
-window.addEventListener("scroll", init);
+window.addEventListener("load", init);
         function init() {
             // Remove loading message
             const loading = document.getElementById('loading');
