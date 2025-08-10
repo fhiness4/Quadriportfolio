@@ -1,3 +1,242 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+function downl(){
+        const downloadLink = document.createElement('a');
+downloadLink.href = 'quadriResume.pdf';
+downloadLink.download = "quadriResume";
+downloadLink.click();
+        }
+        
+                // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formMessage = document.getElementById('formMessage');
+            formMessage.classList.remove('hidden', 'bg-red-500', 'bg-green-500');
+            formMessage.textContent = 'Sending message...';
+            
+            // Simulate form submission (in a real scenario, you would use AJAX to send to server)
+            setTimeout(() => {
+                formMessage.textContent = 'Message was not sent, please contact us on our e-mail/Other platform till we fix the issue';
+                formMessage.classList.add('bg-red-500');
+                
+                // Reset form
+                document.getElementById('contactForm').reset();
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage.classList.add('hidden');
+                }, 5000);
+            }, 1500);
+        });
+        
+        // Animate the glowing border on the popular course card
+        const popularCard = document.querySelector('.glow');
+        setInterval(() => {
+            popularCard.classList.toggle('border-blue-500');
+            popularCard.classList.toggle('border-purple-500');
+        }, 2000);
+        // Animate skill bars when they come into view
+        const skillBars = document.querySelectorAll('.skill-progress');
+        
+        const animateOnScroll = () => {
+            skillBars.forEach(bar => {
+                const barPosition = bar.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (barPosition < screenPosition) {
+                    const width = bar.getAttribute('data-width');
+                    bar.style.width = width;
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Trigger animation on page load if skills are already visible
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set initial width to 0
+            skillBars.forEach(bar => {
+                bar.style.width = '0';
+            });
+            
+            // Check if skills section is visible
+            animateOnScroll();
+        });
+
+     // Scroll animation
+        const fadeElements = document.querySelectorAll('.fade-in, .fade-right, .fade-left');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('visible');
+                    element.classList.add('visible1');
+                    element.classList.add("visible2")
+                }
+            });
+        };
+        
+        // Check on initial load
+        fadeInOnScroll();
+        
+        // Check on scroll
+        window.addEventListener('scroll', fadeInOnScroll);
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (hamburger.classList.contains('active')) {
+                        hamburger.classList.remove('active');
+                        mobileMenu.classList.remove('open');
+                    }
+                }
+            });
+        });
+        
+        // Update active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active-nav');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active-nav');
+                }
+            });
+        });
+        
+        // Hero canvas animation
+        function initHeroCanvas() {
+            const canvas = document.getElementById('hero-canvas');
+            if (!canvas) return;
+            
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            
+            // Create particles
+            const particleCount = 1000;
+            const particles = new THREE.BufferGeometry();
+            const positions = new Float32Array(particleCount * 3);
+            const colors = new Float32Array(particleCount * 3);
+            
+            for (let i = 0; i < particleCount; i++) {
+                positions[i * 3] = (Math.random() - 0.5) * 2000;
+                positions[i * 3 + 1] = (Math.random() - 0.5) * 2000;
+                positions[i * 3 + 2] = (Math.random() - 0.5) * 2000;
+                
+                colors[i * 3] = Math.random() * 0.5 + 0.5; // R
+                colors[i * 3 + 1] = Math.random() * 0.3 + 0.7; // G
+                colors[i * 3 + 2] = Math.random() * 0.5 + 0.5; // B
+            }
+            
+            particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            particles.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+            
+            const particleMaterial = new THREE.PointsMaterial({
+                size: 2,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.8,
+                blending: THREE.AdditiveBlending
+            });
+            
+            const particleSystem = new THREE.Points(particles, particleMaterial);
+            scene.add(particleSystem);
+            
+            camera.position.z = 500;
+            
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                particleSystem.rotation.x += 0.0005;
+                particleSystem.rotation.y += 0.001;
+                
+                renderer.render(scene, camera);
+            }
+            
+            // Handle window resize
+            function onWindowResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+            
+            window.addEventListener('resize', onWindowResize);
+            
+            // Start animation
+            animate();
+        }
+        
+        // Initialize hero canvas
+        initHeroCanvas();
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 window.addEventListener("load", init);
 const dis = document.getElementById('disrend');
         function init() {
@@ -478,224 +717,3 @@ const dis = document.getElementById('disrend');
             const texture = new THREE.CanvasTexture(canvas);
             return texture;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-function downl(){
-        const downloadLink = document.createElement('a');
-downloadLink.href = 'quadriResume.pdf';
-downloadLink.download = "quadriResume";
-downloadLink.click();
-        }
-        
-                // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formMessage = document.getElementById('formMessage');
-            formMessage.classList.remove('hidden', 'bg-red-500', 'bg-green-500');
-            formMessage.textContent = 'Sending message...';
-            
-            // Simulate form submission (in a real scenario, you would use AJAX to send to server)
-            setTimeout(() => {
-                formMessage.textContent = 'Message was not sent, please contact us on our e-mail/Other platform till we fix the issue';
-                formMessage.classList.add('bg-red-500');
-                
-                // Reset form
-                document.getElementById('contactForm').reset();
-                
-                // Hide message after 5 seconds
-                setTimeout(() => {
-                    formMessage.classList.add('hidden');
-                }, 5000);
-            }, 1500);
-        });
-        
-        // Animate the glowing border on the popular course card
-        const popularCard = document.querySelector('.glow');
-        setInterval(() => {
-            popularCard.classList.toggle('border-blue-500');
-            popularCard.classList.toggle('border-purple-500');
-        }, 2000);
-        // Animate skill bars when they come into view
-        const skillBars = document.querySelectorAll('.skill-progress');
-        
-        const animateOnScroll = () => {
-            skillBars.forEach(bar => {
-                const barPosition = bar.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.3;
-                
-                if (barPosition < screenPosition) {
-                    const width = bar.getAttribute('data-width');
-                    bar.style.width = width;
-                }
-            });
-        };
-        
-        window.addEventListener('scroll', animateOnScroll);
-        
-        // Trigger animation on page load if skills are already visible
-        document.addEventListener('DOMContentLoaded', () => {
-            // Set initial width to 0
-            skillBars.forEach(bar => {
-                bar.style.width = '0';
-            });
-            
-            // Check if skills section is visible
-            animateOnScroll();
-        });
-
-     // Scroll animation
-        const fadeElements = document.querySelectorAll('.fade-in, .fade-right, .fade-left');
-        
-        const fadeInOnScroll = () => {
-            fadeElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add('visible');
-                    element.classList.add('visible1');
-                    element.classList.add("visible2")
-                }
-            });
-        };
-        
-        // Check on initial load
-        fadeInOnScroll();
-        
-        // Check on scroll
-        window.addEventListener('scroll', fadeInOnScroll);
-        // Mobile menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            mobileMenu.classList.toggle('open');
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (hamburger.classList.contains('active')) {
-                        hamburger.classList.remove('active');
-                        mobileMenu.classList.remove('open');
-                    }
-                }
-            });
-        });
-        
-        // Update active nav link on scroll
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        window.addEventListener('scroll', () => {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (pageYOffset >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active-nav');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active-nav');
-                }
-            });
-        });
-        
-        // Hero canvas animation
-        function initHeroCanvas() {
-            const canvas = document.getElementById('hero-canvas');
-            if (!canvas) return;
-            
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            
-            // Create particles
-            const particleCount = 1000;
-            const particles = new THREE.BufferGeometry();
-            const positions = new Float32Array(particleCount * 3);
-            const colors = new Float32Array(particleCount * 3);
-            
-            for (let i = 0; i < particleCount; i++) {
-                positions[i * 3] = (Math.random() - 0.5) * 2000;
-                positions[i * 3 + 1] = (Math.random() - 0.5) * 2000;
-                positions[i * 3 + 2] = (Math.random() - 0.5) * 2000;
-                
-                colors[i * 3] = Math.random() * 0.5 + 0.5; // R
-                colors[i * 3 + 1] = Math.random() * 0.3 + 0.7; // G
-                colors[i * 3 + 2] = Math.random() * 0.5 + 0.5; // B
-            }
-            
-            particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-            particles.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-            
-            const particleMaterial = new THREE.PointsMaterial({
-                size: 2,
-                vertexColors: true,
-                transparent: true,
-                opacity: 0.8,
-                blending: THREE.AdditiveBlending
-            });
-            
-            const particleSystem = new THREE.Points(particles, particleMaterial);
-            scene.add(particleSystem);
-            
-            camera.position.z = 500;
-            
-            // Animation loop
-            function animate() {
-                requestAnimationFrame(animate);
-                
-                particleSystem.rotation.x += 0.0005;
-                particleSystem.rotation.y += 0.001;
-                
-                renderer.render(scene, camera);
-            }
-            
-            // Handle window resize
-            function onWindowResize() {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            }
-            
-            window.addEventListener('resize', onWindowResize);
-            
-            // Start animation
-            animate();
-        }
-        
-        // Initialize hero canvas
-        initHeroCanvas();
-  
