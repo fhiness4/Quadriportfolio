@@ -1,5 +1,3 @@
-  // Wait for everything to load
-      init();
 
         function init() {
             // Remove loading message
@@ -481,7 +479,7 @@
         }
 
 
-
+init();
 
 
 
