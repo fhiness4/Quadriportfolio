@@ -697,4 +697,4 @@ downloadLink.click();
         
         // Initialize hero canvas
         initHeroCanvas();
-   window.addEventListener("load", init);
+   init();
