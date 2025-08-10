@@ -304,7 +304,7 @@ const dis = document.getElementById('disrend');
             window.addEventListener('resize', () => {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, 400);
+                renderer.setSize(window.innerWidth, 500);
             });
 
             // Animation loop
