@@ -1,4 +1,4 @@
-
+window.addEventListener("scroll", init);
         function init() {
             // Remove loading message
             const loading = document.getElementById('loading');
@@ -479,7 +479,6 @@
         }
 
 
-init();
 
 
 
