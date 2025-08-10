@@ -1,8 +1,9 @@
 window.addEventListener("load", init);
+const dis = document.getElementById('disrend');
         function init() {
             // Remove loading message
             const loading = document.getElementById('loading');
-            const dis = document.getElementById('disrend');
+            
             loading.style.display = 'none';
 
             // Create scene
