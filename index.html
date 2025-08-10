@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odebunmi Quadri | Web Developer & 3D Animator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen">
+    <!-- Hero Canvas -->
+    <canvas id="hero-canvas"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-opacity-80 z-50 " style="background-color: #0a0a1ac2;">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold gradient-text logo1">Odebunmi Quadri</div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link active-nav text-white hover:text-primary">Home</a>
+                    <a href="#about" class="nav-link text-white hover:text-primary">About</a>
+                    <a href="#skills" class="nav-link text-white hover:text-primary">Skills</a>
+                    <a href="#projects" class="nav-link text-white hover:text-primary">Projects</a>
+                    <a href="#testimonials" class="nav-link text-white hover:text-primary">Testimonials</a>
+                    <a href="#certificates" class="nav-link text-white hover:text-primary">Certificates</a>
+                    <a href="#contact" class="nav-link text-white hover:text-primary">Contact</a>
+                </div>
+                
+                <!-- Mobile Navigation Toggle -->
+                <div class="md:hidden">
+                    <div class="hamburger">
+                        <div class="line w-6 h-0.5 bg-white mb-1.5 transition-all"></div>
+                        <div class="line w-6 h-0.5 bg-white mb-1.5 transition-all"></div>
+                        <div class="line w-6 h-0.5 bg-white transition-all"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div class="mobile-menu bg-dark bg-opacity-90 mt-4 rounded-lg">
+                <div class="px-4 py-2 flex flex-col space-y-3">
+                    <a href="#home" class="nav-link text-white hover:text-primary">Home</a>
+                    <a href="#about" class="nav-link text-white hover:text-primary">About</a>
+                    <a href="#skills" class="nav-link text-white hover:text-primary">Skills</a>
+                    <a href="#projects" class="nav-link text-white hover:text-primary">Projects</a>
+                    <a href="#testimonials" class="nav-link text-white hover:text-primary">Testimonials</a>
+                    <a href="#certificates" class="nav-link text-white hover:text-primary">Certificates</a>
+                    <a href="#contact" class="nav-link text-white hover:text-primary">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20">
+        <div class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text fade-in">ODEBUNMI QUADRI</h1>
+                <h2 class="text-2xl md:text-3xl mb-6 text-white fade-in">FrontendDeveloper/Digital Marketer & 3D Animator</h2>
+                <p class="text-lg mb-8 text-gray-300 max-w-lg fade-in">
+                    Creating immersive digital experiences through cutting-edge web development and stunning 3D animations.
+                </p>
+                <div class="flex space-x-4 fade-in">
+                    <a onclick="downl()" class="px-8 py-3 gradient-bg text-white font-bold rounded-full hover:opacity-90 transition">Download cv</a>
+                    <a href="#projects" class="px-8 py-3 border-2 border-primary text-white font-bold rounded-full hover:bg-primary hover:bg-opacity-10 transition">projects</a>
+                </div>
+            </div>
+            
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative w-64 h-64 md:w-80 md:h-80">
+                    <div class="absolute inset-0 rounded-full gradient-bg opacity-20 blur-xl"></div>
+                    <div class="absolute inset-0 rounded-full border-4 border-primary border-opacity-30"></div>
+                    <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-primary">
+                        <img src="https://i.postimg.cc/d19GK0gn/IMG-20250622-WA0011.jpg" 
+                             alt="Odebunmi Quadri" 
+                             class="w-full h-full object-cover fade-in"/>
+                    </div>
+                    <div class="absolute -bottom-5 left-1/2 transform -translate-x-1/2 px-6 py-2 card-glass rounded-full">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
+                            <span class="text-sm text-white">Available for work</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-1 left-1/1 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-white text-4xl">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-dark bg-opacity-90">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center gradient-text fade-in">About Me</h2>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
+                    <div class="relative w-94 h-94 rounded-2xl overflow-hidden neon-border floating">
+                        <img src="https://i.postimg.cc/WbMGpg19/IMG-20250218-180052-pica.png" 
+                             alt="Odebunmi Quadri working" 
+                             class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-bold mb-4 text-white fade-in">The Creative Mind Behind the Magic</h3>
+                    <p class="text-gray-300 mb-6 fade-in">
+                        I'm Odebunmi Quadri, a passionate web developer, Digital Marketer and 3D animator with over 2 years of experience in creating digital experiences that captivate and engage. My journey began with a fascination for how things work, which evolved into a love for coding and digital art.
+                    </p>
+                    <p class="text-gray-300 mb-6 fade-in">
+                        I specialize in building responsive, performant websites and creating stunning 3D animations using Blender. My approach combines technical precision with artistic vision to deliver projects that are not only functional but visually striking.
+                    </p>
+                    <p class="text-gray-300 mb-8 fade-in">
+                        When I'm not coding or animating, you can find me exploring new technologies, contributing to open-source projects, or mentoring aspiring developers and artists.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 fade-in">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold gradient-text">20+</div>
+                            <div class="text-gray-400">Projects</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold gradient-text">2+</div>
+                            <div class="text-gray-400">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+  <!-- Services Section -->
+    <section id="services" class="py-20 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white-800 mb-4">My <span class="span">Services</span></h2>
+                <div class="w-20 h-1 bg-red-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-dark border p-8 rounded-lg shadow-md hover:shadow-xl transition fade-left duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-code text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white-800 mb-4">Web Development</h3>
+                    <p class="text-white-600 mb-4">Custom web applications built with modern technologies like React, Node.js, and MongoDB for optimal performance and scalability.</p>
+                    <ul class="text-white-600 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Frontend Development</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Responsive Design</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>API Integration</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-dark border p-8 rounded-lg fade-right shadow-md hover:shadow-xl transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-bullseye text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white-800 mb-4">Digital Marketing</h3>
+                    <p class="text-white-600 mb-4 fade-in">Comprehensive digital marketing strategies to grow your online presence and drive targeted traffic to your business.</p>
+                    <ul class="text-white-600 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>SEO Optimization</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Social Media Management</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Content Strategy</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-dark p-8 border rounded-lg fade-right shadow-md hover:shadow-xl transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-cube text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white-800 mb-4">3D/VFX Design</h3>
+                    <p class="text-white-600 mb-4 fade-in">Stunning 3D visualizations and visual effects created with Blender and Unreal Engine for immersive experiences.</p>
+                    <ul class="text-white-600 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>3D Modeling & Animation</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Visual Effects</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Virtual Environments</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-dark p-8 border rounded-lg fade-right shadow-md hover:shadow-xl transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-paint-brush text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white-800 mb-4">Brand Design</h3>
+                    <p class="text-white-600 mb-4 fade-in">Comprehensive brand identity development including logos, style guides, and visual assets for cohesive branding.</p>
+                    <ul class="text-white-600 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Logo Design</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Brand Guidelines</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Visual Identity</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="bg-dark border p-8 rounded-lg fade-left shadow-md hover:shadow-xl transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-mobile-alt text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white-800 mb-4">Mobile Development</h3>
+                    <p class="text-white-600 mb-4 fade-in">Cross-platform mobile applications built with React Native for consistent performance across iOS and Android.</p>
+                    <ul class="text-white-600 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>iOS & Android Apps</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>UI/UX Design</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>App Store Optimization</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="bg-dark border p-8 rounded-lg fade-right shadow-md hover:shadow-xl transition duration-300" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-chart-line text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white-800 mb-4">Growth Strategy</h3>
+                    <p class="text-white-600 mb-4 fade-in">Data-driven growth strategies to scale your business through customer acquisition and retention techniques.</p>
+                    <ul class="text-white-600 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Market Analysis</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Conversion Optimization</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Performance Tracking</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+
+    
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center">
+                <span class="gradient-text  fade-in">My Skills</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Frontend Skills -->
+                <div class="bg-dark p-8 rounded-xl fade-in shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-blue-100 p-2 rounded-md mr-4">
+                            <i class="fas fa-code text-blue-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Frontend Development</h3>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>HTML/CSS</span>
+                                <span>98%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress w-full" data-width="98%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>JavaScript</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress w-full" data-width="95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>React.js</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress w-full" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Python</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress w-full" data-width="85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Backend Skills -->
+                <div class="bg-dark p-8 rounded-xl fade-in shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-blue-100 p-2 rounded-md mr-4">
+                            <i class="fas fa-server text-blue-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Professional Skills</h3>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Digital Marketing</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress w-full" data-width="92%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Brand Strategy</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress w-full" data-width="88%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>UI/UX</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress w-full" data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Project Management</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress w-full" data-width="90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+    </section>
+
+
+
+     <!-- 3D Skills Visualization -->
+            <div class="mt-20 pc">
+                <h3 class="text-2xl font-bold mb-6 text-center text-white">3D Skills Visualization</h3>
+                <div class="rounded-xl overflow-hidden card-glass">
+
+                    <div id="disrend" class="rounded-xl overflow-hidden card-glass">
+
+                    </div>
+ 
+      <div id="loading">Loading 3D workspace...</div>
+       <div id="info">
+        <div class="flex items-center mb-2">
+            <span class="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
+            <span>Programmer Workspace</span>
+        </div>
+        <div>Use mouse to rotate view</div>
+        <div>Scroll to zoom in/out</div>
+        <div class="mt-2">
+            <button id="autoRotateBtn" class="bg-gray-700 hover:bg-gray-600 text-white px-2 py-1 rounded text-sm">
+                Auto Rotate: OFF
+            </button>
+        </div>
+    </div>
+                
+                </div>
+            </div>
+       <!-- Tools & Technologies -->
+
+
+
+
+
+
+            <div class="mt-16 fade-in">
+                <h3 class="text-2xl font-semibold text-white-800 mb-8 text-center">Tools & Technologies</h3>
+                
+                <div class="flex flex-wrap justify-center gap-6">
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="w-12 h-12 mb-2">
+                        <span class="text-gray-600">HTML5</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="w-12 h-12 mb-2">
+                        <span class="text-gray-600">CSS3</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-12 h-12 mb-2">
+                        <span class="text-gray-600">JavaScript</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="w-12 h-12 mb-2">
+                        <span class="text-gray-600">React</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="w-12 h-12 mb-2">
+                        <span class="text-gray-600">Node.js</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="w-12 h-12 mb-2">
+                        <span class="text-gray-600">MongoDB</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" alt="Blender" class="w-12 h-12 mb-2">
+                        <span class="text-gray-600">Blender</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unrealengine/unrealengine-original.svg" alt="Unreal Engine" class="w-12 h-12 mb-2">
+                        <span class="text-gray-600">Unreal Engine</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <img src="https://i.postimg.cc/RZ7qVdnL/Screenshot-2025-06-21-141959.png" alt="Unreal Engine" class="w-12 h-12 mb-2">
+                        <span class="text-gray-600">Shopify</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-slate-900 section">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="text-gradient" style="color: #ff3700;">Projects</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-white-500 to-red-500 mx-auto" style="background-color: #ff3700;"></div>
+                <p class="text-slate-300 mt-6 max-w-2xl mx-auto">Here are some of my recent projects showcasing my skills in web development and visual effects.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card fade-in h-80 rounded-lg overflow-hidden">
+                    <div class="project-inner relative w-full h-full">
+                        <div class="project-front absolute w-full h-full">
+                            <div class="relative h-full">
+                                <img src="https://i.postimg.cc/5tvFL4HT/Screenshot-2025-05-24-104722.png" alt="Project 1" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white">Link Generator Platform</h3>
+                                        <p class="text-slate-300">App Development</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-back absolute w-full h-full bg-slate-800 p-6 flex flex-col justify-center">
+                            <h3 class="text-xl font-bold text-white mb-3">Whatsapp link generator</h3>
+                            <p class="text-slate-300 mb-4">A link generator website with features like automated link message.. with Api integration.</p>
+                            <div class="flex flex-wrap gap-2 mb-4" >
+                                <span class="px-2 py-1 bg-red-900/50 text-white-300 text-xs rounded">Html/css</span>
+                                <span class="px-2 py-1 bg-red-900/50 text-white-300 text-xs rounded">React</span>
+                                <span class="px-2 py-1 bg-red-900/50 text-white-300 text-xs rounded">Api</span>
+                            </div>
+                            <a href="https://fhiness.github.io/WhatsAppLiks/" class="mt-auto text-red-400 hover:text-red-300 text-sm font-medium inline-flex items-center" target="_blank">
+                                View Project <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card  fade-in h-80 rounded-lg overflow-hidden">
+                    <div class="project-inner relative w-full h-full">
+                        <div class="project-front absolute w-full h-full">
+                            <div class="relative h-full">
+                                <img src="https://i.postimg.cc/htRnhKBf/Screenshot-2025-05-24-111311.png" alt="Project 2" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white">A Functioning Image editor</h3>
+                                        <p class="text-slate-300">Web App</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-back absolute w-full h-full bg-slate-800 p-6 flex flex-col justify-center">
+                            <h3 class="text-xl font-bold text-white mb-3">Well designed Image editor</h3>
+                            <p class="text-slate-300 mb-4">Complete image editor development including resize image, add text, sticker , style guide, and editing materials.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-red-900/50 text-white-300 text-xs rounded">Html/css</span>
+                                <span class="px-2 py-1 bg-red-900/50 text-white-300 text-xs rounded">Taiwind css</span>
+                                <span class="px-2 py-1 bg-red-900/50 text-white-300 text-xs rounded">Javascript</span>
+                            </div>
+                            <a href="https://quadrieditor.netlify.app/" class="mt-auto text-red-400 hover:text-red-300 text-sm font-medium inline-flex items-center" target="_blank">
+                                View Project <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card  fade-in h-80 rounded-lg overflow-hidden">
+                    <div class="project-inner relative w-full h-full">
+                        <div class="project-front absolute w-full h-full">
+                            <div class="relative h-full">
+                                <img src="https://i.postimg.cc/KvMFZRC6/Screenshot-2025-05-24-104558.png" alt="Project 3" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white">E-commerce Website</h3>
+                                        <p class="text-slate-300">Web Development</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-back absolute w-full h-full bg-slate-800 p-6 flex flex-col justify-center">
+                            <h3 class="text-xl font-bold text-white mb-3">Mobile device and accessories website</h3>
+                            <p class="text-slate-300 mb-4">Attractive and Comprehensive e-commerce store that increased client revenue by 35% in 6 months.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-red-900/50 text-white-300 text-xs rounded">HTML/CSS</span>
+                                <span class="px-2 py-1 bg-red-900/50 text-white-300 text-xs rounded">JavaScript</span>
+                                <span class="px-2 py-1 bg-red-900/50 text-white-300 text-xs rounded">GSAP</span>
+                            </div>
+                            <a href="https://quadriphone.netlify.app/" class="mt-auto text-red-400 hover:text-red-300 text-sm font-medium inline-flex items-center" target="_blank">
+                                View Project <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <!-- Project 4 -->
+                <div class="project-card  fade-in h-80 rounded-lg overflow-hidden">
+                    <div class="project-inner relative w-full h-full">
+                        <div class="project-front absolute w-full h-full">
+                            <div class="relative h-full">
+                                <img src="https://i.postimg.cc/Gh7Y1Sw7/Screenshot-2025-05-24-112827.png" alt="Project 5" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white">Forex learning Website</h3>
+                                        <p class="text-slate-300">Web Development</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-back absolute w-full h-full bg-slate-800 p-6 flex flex-col justify-center">
+                            <h3 class="text-xl font-bold text-white mb-3">A Trading Web Tutorial platform</h3>
+                            <p class="text-slate-300 mb-4">A full-featured online trading tutorial with plans integration</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-red-900/50 text-white-300 text-xs rounded">React.js</span>
+                                <span class="px-2 py-1 bg-red-900/50 text-white-300 text-xs rounded">Node.js</span>
+                                <span class="px-2 py-1 bg-red-900/50 text-white-300 text-xs rounded">Tailwind CSS</span>
+                            </div>
+                            <a href="https://furtunetrade.netlify.app/" class="mt-auto text-red-400 hover:text-red-300 text-sm font-medium inline-flex items-center" target="_blank">
+                                View Project <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-card  fade-in h-80 rounded-lg overflow-hidden">
+                    <div class="project-inner relative w-full h-full">
+                        <div class="project-front absolute w-full h-full">
+                            <div class="relative h-full">
+                                <img src="https://i.postimg.cc/SNN83b5Y/Screenshot-2025-05-24-111637.png" alt="Project 5" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white">Task Management App</h3>
+                                        <p class="text-slate-300">Web Development</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-back absolute w-full h-full bg-slate-800 p-6 flex flex-col justify-center">
+                            <h3 class="text-xl font-bold text-white mb-3">Task Management App</h3>
+                            <p class="text-slate-300 mb-4">A productivity application for managing tasks with drag-and-drop functionality and team collaboration.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-red-900/50 text-white-300 text-xs rounded">React.js</span>
+                                <span class="px-2 py-1 bg-red-900/50 text-white-300 text-xs rounded">JavaScript</span>
+                                <span class="px-2 py-1 bg-red-900/50 text-white-300 text-xs rounded">Tailwind CSS</span>
+                            </div>
+                            <a href="https://thunderous-tiramisu-115f89.netlify.app/" class="mt-auto text-red-400 hover:text-red-300 text-sm font-medium inline-flex items-center" target="_blank">
+                                View Project <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="project-card  fade-in h-80 rounded-lg overflow-hidden">
+                    <div class="project-inner relative w-full h-full">
+                        <div class="project-front absolute w-full h-full">
+                            <div class="relative h-full">
+                                <img src="https://i.postimg.cc/pLVTzWHk/Screenshot-2025-06-21-073740.png" alt="Project 6" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white">Qr code Generator</h3>
+                                        <p class="text-slate-300">Web App</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-back absolute w-full h-full bg-slate-800 p-6 flex flex-col justify-center">
+                            <h3 class="text-xl font-bold text-white mb-3">Qr code Generator</h3>
+                            <p class="text-slate-300 mb-4">A website that generate a Qr code for pasted links and downloadable generated Qr code</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-red-900/50 text-white-300 text-xs rounded">Html/css</span>
+                                <span class="px-2 py-1 bg-red-900/50 text-white-300 text-xs rounded">Api</span>
+                                <span class="px-2 py-1 bg-red-900/50 text-white-300 text-xs rounded">JavaScript</span>
+                            </div>
+                            <a href="https://quadriqr.netlify.app/" class="mt-auto text-red-400 hover:text-red-300 text-sm font-medium inline-flex items-center  fade-in" target="_blank">
+                                View Project <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="allProject.html" class="inline-flex items-center px-6 py-3   text-white font-medium transition duration-300" style="background-color: #ff3700;">
+                    View All Projects <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-dark bg-opacity-90">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold fade-in mb-16 text-center gradient-text">Client Testimonials</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card fade-in card-glass p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                                 alt="Sarah Johnson" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold">Sarah Johnson</h4>
+                            <p class="text-gray-400 text-sm">CEO, TechSolutions</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        "Odebunmi transformed our outdated website into a modern, responsive platform that has increased our conversions by 40%. His attention to detail and creative solutions were exceptional."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card fade-in p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                                 alt="Michael Chen" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold">Michael Chen</h4>
+                            <p class="text-gray-400 text-sm">Creative Director, PixelPerfect</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        "The 3D animation work Odebunmi did for our product launch was phenomenal. He captured our vision perfectly and delivered beyond our expectations. Will definitely work with him again!"
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card card-glass fade-in p-6 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                                 alt="Emily Rodriguez" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold">Emily Rodriguez</h4>
+                            <p class="text-gray-400 text-sm">Marketing Director, BrandVision</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        "Working with Odebunmi was a game-changer for our digital presence. His technical expertise combined with his artistic eye created a website that truly represents our brand identity."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+            <!-- certificate Section -->
+    <section id="certificates" class="py-20 bg-dark bg-opacity-90">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center fade-in gradient-text">Certificates</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- cer1 1 -->
+                <div class="project-card card-glass rounded-xl fade-in overflow-hidden">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://i.postimg.cc/SNM21LzX/Easy-Coder.png" 
+                             alt="E-commerce Platform" 
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <h3 class="text-xl font-bold text-white">Python certificate</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between">
+                            <a href="https://i.postimg.cc/SNM21LzX/Easy-Coder.png" class="text-primary hover:underline">View certificate</a>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- cer 2 -->
+                <div class="project-card card-glass rounded-xl fade-in overflow-hidden">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://i.postimg.cc/YqJfDqn3/Screenshot-2025-06-21-115614.png" 
+                             alt="3D Animated Short Film" 
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <h3 class="text-xl font-bold text-white">JavaScript certificate</h3>
+
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between">
+                            <a href="https://codeliber.com/certificates/mc6laettcymxq" class="text-primary hover:underline">View certificate</a>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--cer1  3 -->
+                <div class="project-card card-glass rounded-xl fade-in overflow-hidden">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://i.postimg.cc/WpYkQ5MD/Screenshot-2025-06-21-140705.png" 
+                             alt="Interactive WebGL Experience" 
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-4">
+                            <h3 class="text-xl font-bold text-white">Html certificate</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between">
+                            <a href="https://codeliber.com/certificates/mc6psr5q7uinj" class="text-primary hover:underline">View certificate</a>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-dark bg-opacity-90">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 text-center  fade-in gradient-text">Get In Touch</h2>
+            
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-6  fade-in text-white">Let's Collaborate</h3>
+                    <p class="text-gray-300  fade-in mb-8">
+                        Have a project in mind or want to discuss potential opportunities? I'd love to hear from you! Whether it's web development, 3D animation, or something in between, let's create something amazing together.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex  fade-in items-center">
+                            <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
+                                 <a href="mailto:quadriodebunmi41@gmail.com"> <i class="fas fa-envelope text-white text-xl"></i></a>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold">Email</h4>
+                                <a href="mailto:quadriodebunmi41@gmail.com" class="text-gray-300 hover:text-primary">quadriodebunmi41@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex  fade-in items-center">
+                            <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
+                            <a href="tel:+2347068902982"><i class="fas fa-phone-alt text-white text-xl"></i></a> 
+                            </div> 
+                            <div>
+                                <h4 class="text-white font-bold">Phone</h4>
+                                <a href="tel:+2347068902982" class="text-gray-300 hover:text-primary">+234 (706) 890-2982</a>
+                            </div>
+                        </div>
+
+                       <div class="flex  fade-in items-center">
+                            <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
+                            <a href="https://wa.me/2347068902982"><i class="fas fa-phone-alt text-white text-xl"></i></a> 
+                            </div> 
+                           <div>
+                                <h4 class="text-white font-bold">Whatsapp</h4>
+                                <a href="https://wa.me/2347068902982" class="text-gray-300 hover:text-primary">+234 (706) 890-2982</a>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="flex  fade-in items-center">
+                            <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold">Location</h4>
+                                <p class="text-gray-300">Lagos, Nigeria</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8  fade-in">
+                        <h4 class="text-white font-bold mb-4">Connect With Me</h4>
+                        <div class="flex space-x-4">
+                             <a href="https://tiktok.com/@mr_hello_world" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:gradient-bg transition">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                            <a href="https://wa.me/2347068902982" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:gradient-bg transition">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://github.com/fhiness4" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:gradient-bg transition">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:gradient-bg transition">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2  fade-in">
+                    <form id="contactForm" class="card-glass p-8 rounded-xl">
+                        <div class="mb-6">
+                            <label for="name" class="block text-white mb-2">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-white">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-white mb-2">Your Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-white">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="subject" class="block text-white mb-2">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-white">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-white mb-2">Your Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-white"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full px-6 py-3 gradient-bg text-white font-bold rounded-lg hover:opacity-90 transition">
+                            Send Message
+                        </button>
+                   <div id="formMessage" class="hidden text-center py-2 rounded-lg"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-8 bg-black bg-opacity-50  fade-in">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-xl font-bold gradient-text mb-4 md:mb-0">Odebunmi Quadri</div>
+                
+                <div class="flex space-x-6">
+  <a href="https://github.com/fhiness4" class="text-gray-400 hover:text-primary transition">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://tiktok.com/@mr_hello_world" class="text-gray-400 hover:text-primary transition">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://wa.me/2347068902982" class="text-gray-400 hover:text-primary transition">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                  
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                    &copy; 2025 Odebunmi Quadri. All rights reserved.
+                </p>
+                
+                
+            </div>
+        </div>
+    </footer>
+    
+    <script src="main.js"></script>
+</body>
+</html>
