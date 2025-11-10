@@ -18,28 +18,7 @@ downloadLink.download = "quadriResume";
 downloadLink.click();
         }
         
-                // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
             
-            const formMessage = document.getElementById('formMessage');
-            formMessage.classList.remove('hidden', 'bg-red-500', 'bg-green-500');
-            formMessage.textContent = 'Sending message...';
-            
-            // Simulate form submission (in a real scenario, you would use AJAX to send to server)
-            setTimeout(() => {
-                formMessage.textContent = 'Message was not sent, please contact us on our e-mail/Other platform till we fix the issue';
-                formMessage.classList.add('bg-red-500');
-                
-                // Reset form
-                document.getElementById('contactForm').reset();
-                
-                // Hide message after 5 seconds
-                setTimeout(() => {
-                    formMessage.classList.add('hidden');
-                }, 5000);
-            }, 1500);
-        });
         
         // Animate the glowing border on the popular course card
         const popularCard = document.querySelector('.glow');
@@ -717,3 +696,33 @@ const dis = document.getElementById('disrend');
             const texture = new THREE.CanvasTexture(canvas);
             return texture;
         }
+
+
+
+
+
+
+
+
+          document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Your Gmail address - replace with your actual email
+            const yourGmail = 'quadriodebunmi41@gmail.com';
+            
+            // Create mailto link
+            const mailtoLink = `mailto:${yourGmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+                `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+            )}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+        });
+        let newyear = new Date()
+        document.getElementById('year').innerHTML= newyear.getFullYear()

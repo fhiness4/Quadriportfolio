@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odebunmi Quadri | Web Developer & 3D Animator</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="min-h-screen">
     <!-- Hero Canvas -->
@@ -105,10 +107,68 @@
             
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
-                    <div class="relative w-94 h-94 rounded-2xl overflow-hidden neon-border floating">
-                        <img src="https://i.postimg.cc/WbMGpg19/IMG-20250218-180052-pica.png" 
+                    <div class="relative w-94 h-94 rounded-2xl overflow-hidden neon-border floating">              
+
+                          <svg class="svg-container">
+    <defs>
+      <filter id="turbulent-displace" colorInterpolationFilters="sRGB" x="-20%" y="-20%" width="140%" height="140%">
+        <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="1" />
+        <feOffset in="noise1" dx="0" dy="0" result="offsetNoise1">
+          <animate attributeName="dy" values="700; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
+        </feOffset>
+
+        <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="1" />
+        <feOffset in="noise2" dx="0" dy="0" result="offsetNoise2">
+          <animate attributeName="dy" values="0; -700" dur="6s" repeatCount="indefinite" calcMode="linear" />
+        </feOffset>
+
+        <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise1" seed="2" />
+        <feOffset in="noise1" dx="0" dy="0" result="offsetNoise3">
+          <animate attributeName="dx" values="490; 0" dur="6s" repeatCount="indefinite" calcMode="linear" />
+        </feOffset>
+
+        <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="10" result="noise2" seed="2" />
+        <feOffset in="noise2" dx="0" dy="0" result="offsetNoise4">
+          <animate attributeName="dx" values="0; -490" dur="6s" repeatCount="indefinite" calcMode="linear" />
+        </feOffset>
+
+        <feComposite in="offsetNoise1" in2="offsetNoise2" result="part1" />
+        <feComposite in="offsetNoise3" in2="offsetNoise4" result="part2" />
+        <feBlend in="part1" in2="part2" mode="color-dodge" result="combinedNoise" />
+
+        <feDisplacementMap in="SourceGraphic" in2="combinedNoise" scale="30" xChannelSelector="R" yChannelSelector="B" />
+      </filter>
+    </defs>
+  </svg>
+
+  <div class="card-container">
+    <div class="inner-container">
+      <div class="border-outer">
+        <div class="main-card"></div>
+      </div>
+      <div class="glow-layer-1"></div>
+      <div class="glow-layer-2"></div>
+    </div>
+
+    <div class="overlay-1"></div>
+    <div class="overlay-2"></div>
+    <div class="background-glow"></div>
+
+    <div class="content-container">
+      <div class="content-top">
+         <img src="https://i.postimg.cc/XYxLrGHS/IMG-20251021-WA0091.jpg" 
                              alt="Odebunmi Quadri working" 
-                             class="w-full h-full object-cover">
+                             class="h-full w-full object-cover">
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+                    
                     </div>
                 </div>
                 
@@ -489,6 +549,37 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <!-- Project 2 -->
+                <div class="project-card fade-in h-80 rounded-lg overflow-hidden">
+                    <div class="project-inner relative w-full h-full">
+                        <div class="project-front absolute w-full h-full">
+                            <div class="relative h-full">
+                                <img src="https://i.postimg.cc/wjbsq3n7/finesecode-editor.png" alt="Project 1" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white">Code Editor </h3>
+                                        <p class="text-slate-300">Web Development</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-back absolute w-full h-full bg-slate-800 p-6 flex flex-col justify-center">
+                            <h3 class="text-xl font-bold text-white mb-3">A web Code editor</h3>
+                            <p class="text-slate-300 mb-4"> Runs HTML, CSS and JAVASCRIPT on your browser, with formating of code integration </p>
+                            <div class="flex flex-wrap gap-2 mb-4" >
+                                <span class="px-2 py-1 bg-red-900/50 text-white-300 text-xs rounded">Html/css</span>
+                                <span class="px-2 py-1 bg-red-900/50 text-white-300 text-xs rounded">React.js</span>
+                                <span class="px-2 py-1 bg-red-900/50 text-white-300 text-xs rounded">JavaScript/ Es7</span>
+                            </div>
+                            <a href="https://finesseide.netlify.app/" class="mt-auto text-red-400 hover:text-red-300 text-sm font-medium inline-flex items-center" target="_blank">
+                                View Project <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
                 <!-- Project 1 -->
                 <div class="project-card fade-in h-80 rounded-lg overflow-hidden">
                     <div class="project-inner relative w-full h-full">
@@ -683,13 +774,13 @@
                 <div class="testimonial-card fade-in card-glass p-6 rounded-xl">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                            <img src="https://i.postimg.cc/15mkPzpk/clients.png" 
                                  alt="Sarah Johnson" 
                                  class="w-full h-full object-cover">
                         </div>
                         <div>
-                            <h4 class="text-white font-bold">Sarah Johnson</h4>
-                            <p class="text-gray-400 text-sm">CEO, TechSolutions</p>
+                            <h4 class="text-white font-bold">Abolarinwa Jamiu</h4>
+                            <p class="text-gray-400 text-sm">Manager, Neolife company</p>
                         </div>
                     </div>
                     <p class="text-gray-300 mb-4">
@@ -708,13 +799,13 @@
                 <div class="testimonial-card fade-in p-6 rounded-xl">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                            <img src="https://i.postimg.cc/Sjbj2MkD/cliii.png" 
                                  alt="Michael Chen" 
                                  class="w-full h-full object-cover">
                         </div>
                         <div>
-                            <h4 class="text-white font-bold">Michael Chen</h4>
-                            <p class="text-gray-400 text-sm">Creative Director, PixelPerfect</p>
+                            <h4 class="text-white font-bold">David ochochuku O.T</h4>
+                            <p class="text-gray-400 text-sm">Director, Shopify</p>
                         </div>
                     </div>
                     <p class="text-gray-300 mb-4">
@@ -733,13 +824,13 @@
                 <div class="testimonial-card card-glass fade-in p-6 rounded-xl">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                            <img src="https://i.postimg.cc/j5W60mcS/clent.png" 
                                  alt="Emily Rodriguez" 
                                  class="w-full h-full object-cover">
                         </div>
                         <div>
-                            <h4 class="text-white font-bold">Emily Rodriguez</h4>
-                            <p class="text-gray-400 text-sm">Marketing Director, BrandVision</p>
+                            <h4 class="text-white font-bold">Antony David, Ayomide</h4>
+                            <p class="text-gray-400 text-sm">Senior manager , Neolife</p>
                         </div>
                     </div>
                     <p class="text-gray-300 mb-4">
@@ -956,7 +1047,7 @@
             
             <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-gray-500 text-sm mb-4 md:mb-0">
-                    &copy; 2025 Odebunmi Quadri. All rights reserved.
+                    &copy; <span id="year"> 2025 </span> Odebunmi Quadri. All rights reserved.
                 </p>
                 
                 

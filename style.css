@@ -1,0 +1,87 @@
+/* Reset and base styles */
+
+/* CSS Variables */
+:root {
+  --electric-border-color: rgb(255, 0, 0);
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  color: oklch(0.985 0 0);
+  height: 100vh;
+}
+
+/* Main container */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  z-index: 999999;
+}
+
+/* SVG positioning */
+.svg-container {
+  position: absolute;
+  z-index: 9999;
+}
+
+/* Card container */
+.card-container {
+  padding: 2px;
+  border-radius: 24px;
+  position: relative;
+}
+
+/* Inner container */
+.inner-container {
+  position: relative;
+}
+
+
+.main-card {
+  width: 350px;
+  height: 500px;
+  border-radius: 24px;
+  border: 2px solid var(--electric-border-color);
+  margin-top: -4px;
+  margin-left: -4px;
+  filter: url(#turbulent-displace);
+ 
+}
+
+
+
+/* Content container */
+.content-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+/* Content sections */
+.content-top {
+  display: flex;
+  flex-direction: column;
+  padding: 7px;
+  height: 100%;
+}
+.content-top img{
+  border-radius: 15px;
+  image-rendering: pixelated;
+}

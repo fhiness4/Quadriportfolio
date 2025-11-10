@@ -200,10 +200,7 @@
             }
         }
         
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-        
+
         @keyframes pulse {
             0%, 100% {
                 opacity: 1;
